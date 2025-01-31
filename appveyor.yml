@@ -1,0 +1,21 @@
+image: Visual Studio 2019
+
+environment:
+  matrix:
+    - PYTHON: "C:\\Python37"
+
+install:
+  - ps: >-
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+
+before_build:
+  - ps: >-
+      chmod +x ./flaskapp/st.sh
+
+build_script:
+  - ps: >-
+      cd flaskapp
+      ./st.sh
+
+test: off
